@@ -1,0 +1,24 @@
+//Cho dãy số A[] có N phần tử. Mỗi bước biến đổi, bạn cần thực hiện một trong hai loại thao tác sau lên các phần tử A[i]: (1) nhân A[i] với 3, hoặc (2) lấy A[i] chia cho 2.
+
+//Phép chia được thực hiện khi và chỉ khi A[i] là một số chẵn. Tại mỗi bước, không được phép thực hiện duy nhất thao tác (1) lên cả N phần tử.
+
+//Nhiệm vụ của bạn là hãy xác định xem số lượng bước biến đổi có thể được thực hiện lớn nhất bằng bao nhiêu?
+
+
+#include <iostream>
+using namespace std;
+int main () {
+	int n;
+	cin >> n;
+	int cnt = 0;
+	for (int i = 0; i < n; i++){
+		int x;
+		cin >> x;
+		while(x % 2 == 0) {
+			cnt++;
+			x /= 2;
+		}
+	}
+	cout << cnt;
+    return 0;
+}
