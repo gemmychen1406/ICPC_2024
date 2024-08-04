@@ -1,0 +1,33 @@
+#include<iostream>
+#include<string>
+#include<cmath>
+#include<algorithm>
+
+using namespace std;
+
+int main(){
+	int n;
+	cin >> n;
+	int dp[51][30];
+	int a[201] = {1};
+	for (int i = 1; i < 51; i++){
+		if (i == 1) dp[1][0] = 4;
+		else dp[i][0] = dp[i - 1][0] + 4;
+		a[dp[i][0]] = 1;
+		//if (dp[i][0] > n) break;
+	}
+	for (int i = 1; i < 30; i++){
+		if (i == 1) dp[0][1] = 7;
+		else dp[0][i] = dp[0][i - 1] + 7;
+		a[dp[0][i]] = 1;
+		//if (dp[0][1] > n) break;
+	}
+	for (int i = 1; i < 51; i++){
+		for (int j = 1; j < 30; j++){
+			dp[i][j] = dp[i][0] + dp[0][j];
+			a[dp[i][j]] = 1;
+		}
+	}
+	if (a[n]) cout << "Yes";
+	else cout << "No";
+}
